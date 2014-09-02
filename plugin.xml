@@ -33,9 +33,5 @@
 
         <framework src="CoreTelephony.framework" />
     </platform>
-
-    <!-- android -->
-    <platform name="android">
-    </platform>
-
+    
 </plugin>
