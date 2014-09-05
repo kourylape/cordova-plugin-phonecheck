@@ -2,10 +2,10 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        id="org.apache.cordova.checkphone"
-        version="0.0.1-dev">
+        id="local.plugin.phonecheck"
+        version="0.0.2-dev">
 
-    <name>CheckPhone</name>
+    <name>PhoneCheck</name>
     <description>Create a JavaScript function to return true|false if the device is a phone.</description>
     <keywords>check, if, phone, android, ios, cordova</keywords>
     <license>Apache 2.0</license>
@@ -15,23 +15,35 @@
         <engine name="cordova" version=">=3.4.0" />
     </engines>
 
-    <js-module src="www/check-phone.js" name="CheckPhone">
-        <clobbers target="plugin.checkphone.local" />
+    <js-module src="www/phone-check.js" name="PhoneCheck">
+        <clobbers target="PhoneCheck" />
     </js-module>
 
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="CheckPhone">
-                <param name="ios-package" value="CheckPhone" onload="true" />
-                <param name="onload" value="true" />
+            <feature name="PhoneCheck">
+                <param name="ios-package" value="CDVPhoneCheck" />
             </feature>
         </config-file>
 
-        <header-file src="src/ios/CheckPhone.h" />
-        <source-file src="src/ios/CheckPhone.m" />
+        <header-file src="src/ios/CDVPhoneCheck.h" />
+        <source-file src="src/ios/CDVPhoneCheck.m" />
 
         <framework src="CoreTelephony.framework" />
     </platform>
+
+
+     <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="PhoneCheck" >
+                <param name="android-package" value="local.plugin.phonecheck.PhoneCheck"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/PhoneCheck.java" target-dir="src/local/plugin/phonecheck" />
+    </platform>
+
     
 </plugin>
